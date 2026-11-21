@@ -1,4 +1,3 @@
-// Union type: nilai dibatasi hanya pilihan tertentu
 export type Category = 'Kopi' | 'Non-Kopi' | 'Camilan';
 export type CategoryFilterValue = 'Semua' | Category;
 
@@ -8,7 +7,8 @@ export interface MenuItem {
   category: Category;
   price: number;
   description: string;
-  emoji: string;
+  emoji: string; 
+  image: string; 
 }
 
 export interface CartItem {

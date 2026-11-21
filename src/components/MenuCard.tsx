@@ -9,11 +9,23 @@ interface MenuCardProps {
 
 export default function MenuCard({ item, onAdd }: MenuCardProps) {
   const [showDetail, setShowDetail] = useState<boolean>(false);
+  const [imageFailed, setImageFailed] = useState<boolean>(false);
 
   return (
     <article className="card">
-      <div className="card-emoji" aria-hidden="true">
-        {item.emoji}
+      <div className="card-media">
+        {imageFailed ? (
+          <span className="card-emoji" aria-hidden="true">
+            {item.emoji}
+          </span>
+        ) : (
+          <img
+            src={item.image}
+            alt={`Foto ${item.name}`}
+            loading="lazy"
+            onError={() => setImageFailed(true)}
+          />
+        )}
       </div>
       <h3>{item.name}</h3>
       <span className="badge">{item.category}</span>
