@@ -15,3 +15,10 @@ export interface CartItem {
   item: MenuItem;
   qty: number;
 }
+
+export interface Order {
+  id: string;
+  customerName: string;
+  items: CartItem[];
+  total: number;
+}
