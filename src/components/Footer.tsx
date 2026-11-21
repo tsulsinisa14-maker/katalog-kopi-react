@@ -1,13 +1,14 @@
 interface FooterProps {
+  brandName: string;
   studentName: string;
   nim: string;
 }
 
-export default function Footer({ studentName, nim }: FooterProps) {
+export default function Footer({ brandName, studentName, nim }: FooterProps) {
   return (
     <footer className="footer">
       <p>
-        &copy; {new Date().getFullYear()} {studentName} • NIM {nim} • Tugas Pertemuan 7 Pengembangan Aplikasi Web
+        &copy; {brandName} {new Date().getFullYear()} {studentName} • NIM {nim}
       </p>
     </footer>
   );

@@ -4,18 +4,21 @@ import SearchBar from './components/SearchBar';
 import CategoryFilter from './components/CategoryFilter';
 import MenuList from './components/MenuList';
 import Cart from './components/Cart';
+import OrderSuccess from './components/OrderSuccess';
 import Footer from './components/Footer';
 import { menuItems } from './data/menu';
-import type { CartItem, CategoryFilterValue, MenuItem } from './types';
+import type { CartItem, CategoryFilterValue, MenuItem, Order } from './types';
 
 const categories: CategoryFilterValue[] = ['Semua', 'Kopi', 'Non-Kopi', 'Camilan'];
 const STUDENT_NAME = 'Tsulsi Khoirunisa';
 const NIM = '1247050119';
+const BRAND_NAME = 'Ruang Seduh';
 
 function App() {
   const [search, setSearch] = useState<string>('');
   const [category, setCategory] = useState<CategoryFilterValue>('Semua');
   const [cart, setCart] = useState<CartItem[]>([]);
+  const [order, setOrder] = useState<Order | null>(null);
 
   const filteredItems = menuItems.filter((item) => {
     const matchCategory = category === 'Semua' || item.category === category;
@@ -49,9 +52,20 @@ function App() {
 
   const handleClear = () => setCart([]);
 
+  const handleCheckout = (customerName: string) => {
+    const total = cart.reduce((sum, c) => sum + c.item.price * c.qty, 0);
+    setOrder({
+      id: `RS-${Date.now().toString().slice(-6)}`,
+      customerName,
+      items: cart,
+      total,
+    });
+    setCart([]);
+  };
+
   return (
     <>
-      <Header title="Ruang Seduh" studentName={STUDENT_NAME} nim={NIM} cartCount={cartCount} />
+      <Header title={BRAND_NAME} studentName={STUDENT_NAME} cartCount={cartCount} />
 
       <main className="container">
         <div className="layout">
@@ -63,11 +77,19 @@ function App() {
             <MenuList items={filteredItems} onAdd={handleAdd} />
           </section>
 
-          <Cart items={cart} onChangeQty={handleChangeQty} onRemove={handleRemove} onClear={handleClear} />
+          <Cart
+            items={cart}
+            onChangeQty={handleChangeQty}
+            onRemove={handleRemove}
+            onClear={handleClear}
+            onCheckout={handleCheckout}
+          />
         </div>
       </main>
 
-      <Footer studentName={STUDENT_NAME} nim={NIM} />
+      <Footer brandName={BRAND_NAME} studentName={STUDENT_NAME} nim={NIM} />
+
+      {order && <OrderSuccess order={order} onClose={() => setOrder(null)} />}
     </>
   );
 }

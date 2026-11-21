@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import type { CartItem } from '../types';
 import { formatRupiah } from '../utils/format';
 
@@ -6,10 +7,25 @@ interface CartProps {
   onChangeQty: (id: number, delta: number) => void;
   onRemove: (id: number) => void;
   onClear: () => void;
+  onCheckout: (customerName: string) => void;
 }
 
-export default function Cart({ items, onChangeQty, onRemove, onClear }: CartProps) {
+export default function Cart({ items, onChangeQty, onRemove, onClear, onCheckout }: CartProps) {
+  const [customerName, setCustomerName] = useState<string>('');
+  const [error, setError] = useState<string>('');
+
   const total = items.reduce((sum, c) => sum + c.item.price * c.qty, 0);
+
+  const handleCheckout = () => {
+    const name = customerName.trim();
+    if (name === '') {
+      setError('Nama pemesan wajib diisi.');
+      return;
+    }
+    onCheckout(name);
+    setCustomerName('');
+    setError('');
+  };
 
   return (
     <aside className="cart" id="keranjang" aria-label="Keranjang">
@@ -47,9 +63,35 @@ export default function Cart({ items, onChangeQty, onRemove, onClear }: CartProp
           <p className="cart-total">
             Total: <strong>{formatRupiah(total)}</strong>
           </p>
-          <button type="button" className="btn" onClick={onClear}>
-            Kosongkan keranjang
-          </button>
+
+          <label htmlFor="customer" className="cart-label">
+            Nama pemesan
+          </label>
+          <input
+            id="customer"
+            className="cart-input"
+            type="text"
+            placeholder="Contoh: Tsulsi"
+            value={customerName}
+            onChange={(e) => {
+              setCustomerName(e.target.value);
+              setError('');
+            }}
+          />
+          {error && (
+            <p className="form-error" role="alert">
+              {error}
+            </p>
+          )}
+
+          <div className="cart-buttons">
+            <button type="button" className="btn btn-primary" onClick={handleCheckout}>
+              Pesan sekarang
+            </button>
+            <button type="button" className="btn" onClick={onClear}>
+              Kosongkan
+            </button>
+          </div>
         </>
       )}
     </aside>
