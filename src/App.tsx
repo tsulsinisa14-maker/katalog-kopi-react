@@ -51,7 +51,7 @@ function App() {
 
   return (
     <>
-      <Header title="Kopi dan Nyemil" studentName={STUDENT_NAME} nim={NIM} cartCount={cartCount} />
+      <Header title="Ruang Seduh" studentName={STUDENT_NAME} nim={NIM} cartCount={cartCount} />
 
       <main className="container">
         <div className="layout">
