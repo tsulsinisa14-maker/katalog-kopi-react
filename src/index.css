@@ -236,3 +236,90 @@ html { scroll-behavior: smooth; }
   font-size: 30px;
   letter-spacing: 0.5px;
 }
+
+/* ===== Hero ===== */
+.hero {
+  background:
+    linear-gradient(120deg, rgba(75, 46, 30, 0.92), rgba(138, 90, 60, 0.78)),
+    url('/images/hero.jpg') center / cover no-repeat,
+    #4b2e1e;
+  color: #fff;
+  padding: 56px 20px;
+}
+.hero-content { max-width: 1100px; margin: 0 auto; }
+.hero-kicker {
+  margin: 0 0 8px;
+  font-size: 13px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #e6d3c3;
+}
+.hero h2 {
+  margin: 0 0 12px;
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: clamp(28px, 5vw, 44px);
+  line-height: 1.15;
+}
+.hero-subtitle { margin: 0 0 24px; max-width: 520px; font-size: 16px; color: #f3e8dd; }
+.hero-cta {
+  display: inline-block;
+  padding: 12px 26px;
+  border-radius: 999px;
+  background: #f3e8dd;
+  color: #4b2e1e;
+  font-weight: 700;
+  text-decoration: none;
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+.hero-cta:hover { background: #fff; transform: translateY(-2px); }
+
+/* ===== Kartu menu lebih hidup ===== */
+.card {
+  box-shadow: 0 1px 3px rgba(75, 46, 30, 0.08);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px rgba(75, 46, 30, 0.16);
+}
+.card-media { position: relative; }
+.card-media img { transition: transform 0.4s ease; }
+.card:hover .card-media img { transform: scale(1.06); }
+
+.ribbon {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  padding: 4px 12px;
+  border-radius: 999px;
+  background: #d9822b;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 700;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+/* ===== Urutkan dan jumlah hasil ===== */
+.toolbar-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.result-count { margin: 0; font-size: 14px; color: #7a6252; }
+.sort { display: flex; align-items: center; gap: 8px; font-size: 14px; }
+.sort select {
+  font: inherit;
+  padding: 8px 12px;
+  border: 1px solid #d9c7b8;
+  border-radius: 8px;
+  background: #fff;
+  color: #3b2a20;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card, .card-media img, .hero-cta { transition: none; }
+  .card:hover { transform: none; }
+  .card:hover .card-media img { transform: none; }
+}

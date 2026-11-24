@@ -1,5 +1,6 @@
 export type Category = 'Kopi' | 'Non-Kopi' | 'Camilan';
 export type CategoryFilterValue = 'Semua' | Category;
+export type SortOption = 'default' | 'termurah' | 'termahal' | 'nama';
 
 export interface MenuItem {
   id: number;

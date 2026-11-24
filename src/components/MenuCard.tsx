@@ -26,6 +26,7 @@ export default function MenuCard({ item, onAdd }: MenuCardProps) {
             onError={() => setImageFailed(true)}
           />
         )}
+        {item.bestSeller && <span className="ribbon">Terlaris</span>}
       </div>
       <h3>{item.name}</h3>
       <span className="badge">{item.category}</span>
