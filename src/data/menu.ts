@@ -11,4 +11,6 @@ export const menuItems: MenuItem[] = [
   { id: 8, name: 'Roti Bakar Coklat Keju', category: 'Camilan', price: 17000, description: 'Roti bakar hangat dengan coklat dan keju.', emoji: '🍞', image: '/images/RotiBakarCoklatKeju.jpg', bestSeller: true },
   { id: 9, name: 'Pisang Goreng Keju', category: 'Camilan', price: 14000, description: 'Pisang goreng dengan taburan keju.', emoji: '🍌', image: '/images/PisangGorengKeju.jpg' },
   { id: 10, name: 'Cookies Coklat', category: 'Camilan', price: 10000, description: 'Cookies renyah dengan chocolate chip.', emoji: '🍪', image: '/images/CookiesCoklat.jpg' },
+    { id: 11, name: 'Nasi Goreng Spesial', category: 'Makanan', price: 22000, description: 'Nasi goreng bumbu khas dengan telur, ayam suwir, dan kerupuk.', emoji: '🍛', image: '/images/NasiGoreng.jpg' },
+  { id: 12, name: 'Kwetiau Goreng', category: 'Makanan', price: 22000, description: 'Kwetiau goreng dengan sayuran, telur, dan bakso.', emoji: '🍜', image: '/images/KwetiauGoreng.jpg' },
 ];

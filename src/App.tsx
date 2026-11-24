@@ -11,7 +11,7 @@ import Footer from './components/Footer';
 import { menuItems } from './data/menu';
 import type { CartItem, CategoryFilterValue, MenuItem, Order, SortOption } from './types';
 
-const categories: CategoryFilterValue[] = ['Semua', 'Kopi', 'Non-Kopi', 'Camilan'];
+const categories: CategoryFilterValue[] = ['Semua', 'Kopi', 'Non-Kopi', 'Camilan', 'Makanan'];
 const STUDENT_NAME = 'Tsulsi Khoirunisa';
 const NIM = '1247050119';
 const BRAND_NAME = 'Ruang Seduh';

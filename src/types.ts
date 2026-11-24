@@ -1,5 +1,5 @@
 // Union type: nilai dibatasi hanya pilihan tertentu
-export type Category = 'Kopi' | 'Non-Kopi' | 'Camilan';
+export type Category = 'Kopi' | 'Non-Kopi' | 'Camilan' | 'Makanan';
 export type CategoryFilterValue = 'Semua' | Category;
 export type SortOption = 'default' | 'termurah' | 'termahal' | 'nama';
 
