@@ -6,3 +6,8 @@ export function formatRupiah(value: number): string {
     maximumFractionDigits: 0,
   }).format(value);
 }
+
+// Mengubah rating menjadi satu angka desimal, contoh: 4.8 -> 4,8
+export function formatRating(value: number): string {
+  return value.toLocaleString('id-ID', { minimumFractionDigits: 1, maximumFractionDigits: 1 });
+}
