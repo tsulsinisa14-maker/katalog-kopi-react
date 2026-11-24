@@ -323,3 +323,91 @@ html { scroll-behavior: smooth; }
   .card:hover { transform: none; }
   .card:hover .card-media img { transform: none; }
 }
+
+/* ===== Rating dan terjual ===== */
+.meta { margin: 0; font-size: 13px; color: #7a6252; }
+.star { color: #e0a526; }
+
+/* ===== Notifikasi ===== */
+.toast {
+  position: fixed;
+  top: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 200;
+  background: #3b2a20;
+  color: #fff;
+  padding: 12px 20px;
+  border-radius: 999px;
+  font-size: 14px;
+  text-align: center;
+  max-width: calc(100vw - 32px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+  animation: toast-in 0.25s ease;
+}
+@keyframes toast-in {
+  from { opacity: 0; transform: translate(-50%, -12px); }
+  to { opacity: 1; transform: translate(-50%, 0); }
+}
+
+/* ===== Bagian "Kenapa ...?" ===== */
+.why { margin-top: 40px; }
+.why h2 {
+  text-align: center;
+  margin: 0 0 20px;
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 28px;
+}
+.why-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; }
+.why-card {
+  background: #fff;
+  border: 1px solid #ecdccd;
+  border-radius: 12px;
+  padding: 20px;
+}
+.why-number {
+  display: inline-block;
+  margin-bottom: 8px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: #d9822b;
+}
+.why-card h3 { margin: 0 0 8px; font-size: 18px; }
+.why-card p { margin: 0; font-size: 14px; line-height: 1.5; color: #5c4636; }
+
+/* ===== Tombol keranjang mengambang (hanya di HP) ===== */
+.fab { display: none; }
+@media (max-width: 800px) {
+  .fab {
+    position: fixed;
+    right: 16px;
+    bottom: 16px;
+    z-index: 90;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 18px;
+    border-radius: 999px;
+    background: #4b2e1e;
+    color: #fff;
+    font-weight: 700;
+    text-decoration: none;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  }
+  .fab-count {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 24px;
+    height: 24px;
+    padding: 0 6px;
+    border-radius: 999px;
+    background: #d9822b;
+    font-size: 13px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .toast { animation: none; }
+}

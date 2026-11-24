@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 import Header from './components/Header';
 import Hero from './components/Hero';
 import SearchBar from './components/SearchBar';
@@ -6,10 +6,21 @@ import CategoryFilter from './components/CategoryFilter';
 import SortSelect from './components/SortSelect';
 import MenuList from './components/MenuList';
 import Cart from './components/Cart';
+import WhyUs from './components/WhyUs';
+import FloatingCart from './components/FloatingCart';
+import Toast from './components/Toast';
 import OrderSuccess from './components/OrderSuccess';
 import Footer from './components/Footer';
 import { menuItems } from './data/menu';
-import type { CartItem, CategoryFilterValue, MenuItem, Order, SortOption } from './types';
+import { features } from './data/features';
+import type {
+  CartItem,
+  CategoryFilterValue,
+  MenuItem,
+  Order,
+  SortOption,
+  ToastState,
+} from './types';
 
 const categories: CategoryFilterValue[] = ['Semua', 'Kopi', 'Non-Kopi', 'Camilan', 'Makanan'];
 const STUDENT_NAME = 'Tsulsi Khoirunisa';
@@ -22,6 +33,9 @@ function App() {
   const [sort, setSort] = useState<SortOption>('default');
   const [cart, setCart] = useState<CartItem[]>([]);
   const [order, setOrder] = useState<Order | null>(null);
+  const [toast, setToast] = useState<ToastState | null>(null);
+
+  const closeToast = useCallback(() => setToast(null), []);
 
   const filteredItems = menuItems.filter((item) => {
     const matchCategory = category === 'Semua' || item.category === category;
@@ -52,6 +66,7 @@ function App() {
       }
       return [...prev, { item, qty: 1 }];
     });
+    setToast({ id: Date.now(), text: `${item.name} ditambahkan ke keranjang` });
   };
 
   const handleChangeQty = (id: number, delta: number) => {
@@ -111,10 +126,14 @@ function App() {
             onCheckout={handleCheckout}
           />
         </div>
+
+        <WhyUs brandName={BRAND_NAME} features={features} />
       </main>
 
       <Footer brandName={BRAND_NAME} studentName={STUDENT_NAME} nim={NIM} />
 
+      <FloatingCart count={cartCount} />
+      {toast && <Toast key={toast.id} message={toast.text} onClose={closeToast} />}
       {order && <OrderSuccess order={order} onClose={() => setOrder(null)} />}
     </>
   );

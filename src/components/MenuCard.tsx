@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import type { MenuItem } from '../types';
-import { formatRupiah } from '../utils/format';
+import { formatRating, formatRupiah } from '../utils/format';
 
 interface MenuCardProps {
   item: MenuItem;
@@ -30,6 +30,12 @@ export default function MenuCard({ item, onAdd }: MenuCardProps) {
       </div>
       <h3>{item.name}</h3>
       <span className="badge">{item.category}</span>
+      <p className="meta" aria-label={`Rating ${formatRating(item.rating)}, ${item.sold} terjual`}>
+        <span className="star" aria-hidden="true">
+          ★
+        </span>{' '}
+        {formatRating(item.rating)} • {item.sold} terjual
+      </p>
       <p className="price">{formatRupiah(item.price)}</p>
 
       {showDetail && <p className="desc">{item.description}</p>}
