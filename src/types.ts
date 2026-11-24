@@ -1,3 +1,4 @@
+// Union type: nilai dibatasi hanya pilihan tertentu
 export type Category = 'Kopi' | 'Non-Kopi' | 'Camilan';
 export type CategoryFilterValue = 'Semua' | Category;
 export type SortOption = 'default' | 'termurah' | 'termahal' | 'nama';
@@ -8,8 +9,9 @@ export interface MenuItem {
   category: Category;
   price: number;
   description: string;
-  emoji: string; 
-  image: string; 
+  emoji: string; // cadangan kalau foto gagal dimuat, juga dipakai di keranjang
+  image: string; // lokasi foto di folder public
+  bestSeller?: boolean; // opsional: menu terlaris
 }
 
 export interface CartItem {
