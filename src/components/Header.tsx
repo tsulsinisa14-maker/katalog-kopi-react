@@ -12,7 +12,6 @@ export default function Header({ title, studentName, cartCount }: HeaderProps) {
         <p>{studentName}</p>
       </div>
       <nav className="nav" aria-label="Navigasi utama">
-        <a href="#menu">Menu</a>
         <a href="#keranjang">Keranjang ({cartCount})</a>
       </nav>
     </header>

@@ -411,3 +411,23 @@ html { scroll-behavior: smooth; }
 @media (prefers-reduced-motion: reduce) {
   .toast { animation: none; }
 }
+
+/* ===== Menu di atas hero ===== */
+.hero-nav {
+  max-width: 1100px;
+  margin: 0 auto 36px;
+  display: flex;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.hero-nav a {
+  color: #fff;
+  text-decoration: none;
+  padding: 8px 14px;
+  border-radius: 999px;
+  font-size: 14px;
+  transition: background 0.2s ease;
+}
+.hero-nav a:hover { background: rgba(255, 255, 255, 0.18); }
+.hero { padding-top: 24px; }
