@@ -12,7 +12,7 @@ export default function SearchBar({ value, onChange }: SearchBarProps) {
       <input
         id="search"
         type="search"
-        placeholder="Cari menu..."
+        placeholder="Cari menu, kategori, atau bahan..."
         value={value}
         onChange={(e) => onChange(e.target.value)}
       />

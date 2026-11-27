@@ -13,6 +13,7 @@ import OrderSuccess from './components/OrderSuccess';
 import Footer from './components/Footer';
 import { menuItems } from './data/menu';
 import { features } from './data/features';
+import { matchesSearch } from './utils/search';
 import type {
   CartItem,
   CategoryFilterValue,
@@ -37,10 +38,9 @@ function App() {
 
   const closeToast = useCallback(() => setToast(null), []);
 
-  const filteredItems = menuItems.filter((item) => {
+    const filteredItems = menuItems.filter((item) => {
     const matchCategory = category === 'Semua' || item.category === category;
-    const matchSearch = item.name.toLowerCase().includes(search.trim().toLowerCase());
-    return matchCategory && matchSearch;
+    return matchCategory && matchesSearch(item, search);
   });
 
   const sortedItems = [...filteredItems].sort((a, b) => {
